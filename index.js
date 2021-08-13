@@ -14,52 +14,60 @@ let lastName = _.shuffle(lastNames);
 /**
  * Namerr 
  * 
- * A tool to generate full names, emails, and usernames in bulk
+ * A tool to generate full names, emails, passwords, and usernames in bulk
  */
 
 class Namerr {
 
   /**
+  * Namerr.name() - returns a single full name string
+  * 
   * @returns String - single name "firstname lastname"
   */
-  static makeName() {
+  static name() {
     let rand = Math.floor(Math.random() * 4500);
-    console.log(`${firstNames[rand]} ${lastNames[rand]}`);
+    // console.log(`${firstNames[rand]} ${lastNames[rand]}`);
     return `${firstNames[rand]} ${lastNames[rand]}`;
   }
 
 
   /**
+  * Namerr.names(#) - returns an array of full name strings n long
+  * 
   * @argument Integer - input how many names you want to have populate return array
   * @returns Array of Strings, ["first last", "first last", "... ..."]
   */
-  static makeNames(total = 1) {
+  static names(total = 1) {
     let results = [];
     for (let i = 0; i < total; i++) {
       let rand = Math.floor(Math.random() * 4500);
       results.push(`${firstNames[rand]} ${lastNames[rand]}`);
     }
-    console.log(results);
+    // console.log(results);
     return results
   }
 
 
   /**
+  * Namerr.email() - returns a single email address string
+  * 
   * @returns String - single name "firstname lastname"
   */
-  static makeEmail() {
+  static email() {
     let rand = Math.floor(Math.random() * 4500);
     let userNums = `${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}`;
-    console.log(`${firstNames[rand]}_${lastNames[rand] + userNums}@${_.shuffle(emailDomains)[0]}`.toLowerCase());
-    return `${firstNames[rand][0]}_${lastNames[rand], + userNums}@${_.shuffle(emailDomains)[0]}`.toLowerCase();
+    // console.log(`${firstNames[rand][0]}_${lastNames[rand] + userNums}@${_.shuffle(emailDomains)[0]}`.toLowerCase());
+    return `${firstNames[rand][0]}_${lastNames[rand] + userNums}@${_.shuffle(emailDomains)[0]}`.toLowerCase();
   }
 
 
   /**
+  * Namerr.emails(#) -  returns an array of email address strings n long
+  * 
   * @argument Integer - input how many emails you want to have populate return array
   * @returns Array of Strings, ["e_mail00@domain.com", "....", "..."]
   */
-  static makeEmails(total = 1) {
+  static emails(total = 1) {
     let results = [];
 
     for (let i = 0; i < total; i++) {
@@ -67,16 +75,32 @@ class Namerr {
       let rand = Math.floor(Math.random() * 4500);
       results.push(`${firstNames[rand][0]}_${lastNames[rand] + userNums}@${_.shuffle(emailDomains)[0]}`.toLowerCase());
     }
-    console.log(results);
+    // console.log(results);
     return results;
   }
 
 
   /**
-  * @argument Integer - input how many user objects you want to have populate return object
-  * @returns obj or user obj, {0:{firstname, middlename, lastname, fullname, firstlast, email}, 1:{...},2:{...}}
+  * Namerr.username() - returns a single username string
+  * 
+  * @returns String - single name "p_vonr55"
   */
-  static makeUsers(total = 1) {
+  static username() {
+    let rand = Math.floor(Math.random() * 4500);
+    let userNums = `${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}`;
+    // console.log(`${firstName[rand][0]}_${lastName[rand].slice(0,4)}${userNums}`.toLowerCase());
+    return `${firstName[rand][0]}_${lastName[rand].slice(0,4)}${userNums}`.toLowerCase();
+  }
+
+
+
+  /**
+  * Namerr.users(#) - returns a object indexed with n ammount of user object  
+  * 
+  * @argument Integer - input how many user objects you want to have populate return object
+  * @returns obj or user obj, {0:{firstName, middleName, lastName, fullName, firstLast, email, username, password}, 1:{...},2:{...}}
+  */
+  static users(total = 1) {
     let randomEmails = _.shuffle(emailDomains);
     let results = {};
     for (let i = 0; i < total; i++) {
@@ -97,22 +121,18 @@ class Namerr {
       };
     }
 
-    console.log(results);
+    // console.log(results);
     return results;
   }
 
-  static makePassword() {
+  /**
+  * Namerr.password() - returns a single unique password using uuidv4
+  */
+  static password() {
     let password = uuidv4();
-    console.log(password);
+    // console.log(password);
     return password;
   }
 }
 
-module.exports = {Namerr}
-
-// Namerr.makeUsers();
-// Namerr.makeNames();
-// Namerr.makeName();
-// Namerr.makeEmail();
-// Namerr.makeEmails(2500);
-// Namerr.makePassword();
+module.exports = {Namerr};
