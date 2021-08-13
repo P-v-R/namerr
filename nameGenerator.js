@@ -104,13 +104,14 @@ class Namerr {
   static makePassword() {
     let password = uuidv4();
     console.log(password);
-    return password
+    return password;
   }
 }
 
-Namerr.makeUsers(5);
-// Namerr.makeNames(50);
+
+Namerr.makeUsers(25);
+// Namerr.makeNames(500);
 // Namerr.makeName();
 // Namerr.makeEmail();
-// Namerr.makeEmails(50);
-// Namerr.makePassword()
+// Namerr.makeEmails(25);
+Namerr.makePassword();
