@@ -108,10 +108,11 @@ class Namerr {
   }
 }
 
+module.exports = {Namerr}
 
-Namerr.makeUsers(25);
-// Namerr.makeNames(500);
+// Namerr.makeUsers();
+// Namerr.makeNames();
 // Namerr.makeName();
 // Namerr.makeEmail();
-// Namerr.makeEmails(25);
-Namerr.makePassword();
+// Namerr.makeEmails(2500);
+// Namerr.makePassword();
