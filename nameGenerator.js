@@ -1,14 +1,21 @@
-// import { firstNames } from "./names/firstNames";
-// import { lastNames } from "./names/lastNames";
+"use strict";
 
 const { firstNames } = require("./names/firstNames");
 const { lastNames } = require("./names/lastNames");
 const { emailDomains } = require("./names/emailDomains");
+const { v4: uuidv4 } = require('uuid');
 const _ = require("lodash");
 
 let firstName = _.shuffle(firstNames);
 let lastName = _.shuffle(lastNames);
 
+
+
+/**
+ * Namerr 
+ * 
+ * A tool to generate full names, emails, and usernames in bulk
+ */
 
 class Namerr {
 
@@ -58,8 +65,7 @@ class Namerr {
     for (let i = 0; i < total; i++) {
       let userNums = `${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}`
       let rand = Math.floor(Math.random() * 4500);
-
-      results.push(`${firstNames[rand]}_${lastNames[rand] + userNums}@${_.shuffle(emailDomains)[0]}`.toLowerCase());
+      results.push(`${firstNames[rand][0]}_${lastNames[rand] + userNums}@${_.shuffle(emailDomains)[0]}`.toLowerCase());
     }
     console.log(results);
     return results;
@@ -68,7 +74,7 @@ class Namerr {
 
   /**
   * @argument Integer - input how many user objects you want to have populate return object
-  * @returns obj or user obj, {0:{firstname, lastname, fullname, email}, 1:{...},2:{...}}
+  * @returns obj or user obj, {0:{firstname, middlename, lastname, fullname, firstlast, email}, 1:{...},2:{...}}
   */
   static makeUsers(total = 1) {
     let randomEmails = _.shuffle(emailDomains);
@@ -76,16 +82,18 @@ class Namerr {
     for (let i = 0; i < total; i++) {
 
       let userNums = `${Math.floor(Math.random() * 9)}${Math.floor(Math.random() * 9)}`;
-
       let fullName = `${firstName[i]} ${lastName[i]}`;
-
       let email = `${firstName[i][0]}_${lastName[i]}${userNums}@${randomEmails[i % randomEmails.length]}`.toLowerCase();
 
       results[i] = {
         firstName: firstName[i],
+        middleName: firstName[i+1],
         lastName: lastName[i],
-        fullName,
-        email
+        fullName: `${firstName[i]} ${firstName[i+1][0]}. ${lastName[i]}`,
+        firstLast: fullName,
+        email,
+        username: `${firstName[i][0]}_${lastName[i].slice(0,4)}${userNums}`,
+        password:uuidv4()
       };
     }
 
@@ -93,14 +101,16 @@ class Namerr {
     return results;
   }
 
+  static makePassword() {
+    let password = uuidv4();
+    console.log(password);
+    return password
+  }
 }
 
-let namerr = new Namerr();
-
-
-
-Namerr.makeUsers();
-Namerr.makeNames();
-Namerr.makeName();
-Namerr.makeEmail();
-Namerr.makeEmails();
+Namerr.makeUsers(5);
+// Namerr.makeNames(50);
+// Namerr.makeName();
+// Namerr.makeEmail();
+// Namerr.makeEmails(50);
+// Namerr.makePassword()

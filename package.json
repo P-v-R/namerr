@@ -9,6 +9,7 @@
   "author": "Perry von Rosenvinge",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "uuid": "^8.3.2"
   }
 }
