@@ -1,6 +1,6 @@
 {
   "name": "namerr",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "A program for generating fake names, emails, and more.",
   "main": "index.js",
   "scripts": {
