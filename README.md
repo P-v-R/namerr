@@ -1,3 +1,6 @@
+![Logo](logo.svg)
+
+
 **Namerr**
 
 A developer tool for generating fake names, user objects, emails, and more. With over 20Million possible unique name combinations, youll never need
