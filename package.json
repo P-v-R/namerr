@@ -1,7 +1,7 @@
 {
   "name": "namerr",
   "version": "1.0.4",
-  "description": "A program for generating fake names, emails, and more.",
+  "description": "A package for generating fake names, emails, and more.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
