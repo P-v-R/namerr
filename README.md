@@ -16,7 +16,7 @@ $ npm install namerr
 
 To import **Namerr** class.
 ```javascript
-const {Namerr} = request('namerr');
+const {Namerr} = require('namerr');
 ```
 
 To use.
